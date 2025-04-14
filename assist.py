@@ -3,13 +3,35 @@ import time
 from pygame import mixer
 import os
 from dotenv import load_dotenv
+import httpx
+from httpx import HTTPTransport
+from fp.fp import FreeProxy
 
 # Load environment variables from .env file
 load_dotenv()
 
 #https://platform.openai.com/playground/assistants
 # Initialize the client and mixer
-client = OpenAI(default_headers={"OpenAI-Beta": "assistants=v2"}, api_key= os.getenv('API_KEY'))
+
+
+# Fetch API key from environment variables
+api_key = os.getenv('API_KEY')
+
+# Configure the proxy
+proxy_url = str(FreeProxy(url='api.openai.com').get())
+
+# Create a custom transport with the proxy configuration
+transport = httpx.HTTPTransport(proxy=httpx.Proxy(url=proxy_url))
+
+# Initialize the custom HTTP client with the transport
+http_client = httpx.Client(transport=transport)
+
+# Initialize the OpenAI client
+client = OpenAI(
+    default_headers={"OpenAI-Beta": "assistants=v2"},
+    api_key=api_key,
+    http_client=http_client
+)
 mixer.init()
 
 
