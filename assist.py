@@ -16,7 +16,8 @@ mixer.init()
 
 # Retrieve the assistant and thread
 assistant = client.beta.assistants.retrieve(os.getenv('ASSISTANT_ID'))
-thread = client.beta.threads.retrieve(os.getenv('THREAD_ID'))
+# thread = client.beta.threads.retrieve(thread_id=os.getenv('THREAD_ID'))
+thread = client.beta.threads.create()
 
 def ask_question_memory(question):
     global thread

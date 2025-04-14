@@ -3,7 +3,7 @@ import asyncio
 import assist
 from icrawler.builtin import GoogleImageCrawler
 import os
-import spot
+# import spot
 
 
 async def get_weather(city_name):
@@ -30,24 +30,24 @@ def parse_command(command):
         query = command.split("-")[1]
         search(query)
     
-    if "play" in command:
-        spot.start_music()
+    # if "play" in command:
+    #     spot.start_music()
 
-    if "pause" in command:
-        spot.stop_music()
+    # if "pause" in command:
+    #     spot.stop_music()
     
-    if "skip" in command:
-        spot.skip_to_next()
+    # if "skip" in command:
+    #     spot.skip_to_next()
     
-    if "previous" in command:
-        spot.skip_to_previous()
+    # if "previous" in command:
+    #     spot.skip_to_previous()
     
-    if "spotify" in command:
-        spotify_info = spot.get_current_playing_info()
-        query = "System information: " + str(spotify_info)
-        print(query)
-        response = assist.ask_question_memory(query)
-        done = assist.TTS(response)
+    # if "spotify" in command:
+    #     spotify_info = spot.get_current_playing_info()
+    #     query = "System information: " + str(spotify_info)
+    #     print(query)
+    #     response = assist.ask_question_memory(query)
+    #     done = assist.TTS(response)
         
 
     

@@ -1,6 +1,6 @@
 import pygame
 import math
-import samsung
+import samsungctl as samsung
 
 def run(screen):
     NUM_DEVICES = 12
