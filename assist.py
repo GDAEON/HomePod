@@ -5,7 +5,6 @@ import os
 from dotenv import load_dotenv
 import httpx
 from httpx import HTTPTransport
-from fp.fp import FreeProxy
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,7 +17,7 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 
 # Configure the proxy
-proxy_url = str(FreeProxy(url='api.openai.com').get())
+proxy_url = os.getenv("PROXY")
 
 # Create a custom transport with the proxy configuration
 transport = httpx.HTTPTransport(proxy=httpx.Proxy(url=proxy_url))
