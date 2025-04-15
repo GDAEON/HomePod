@@ -116,7 +116,7 @@ def apply_blur_ring_and_text(screen, text, blue_ring_thickness=100):
     # pygame.display.update()
 
 def run_voice_assistant(circles, screen, background, draw_event, idle_event):
-    recorder = AudioToTextRecorder(spinner=False, model="tiny", language="ru", post_speech_silence_duration=0.1, silero_sensitivity=0.4)
+    recorder = AudioToTextRecorder(spinner=False, model="tiny", language="ru", post_speech_silence_duration=0.5, silero_sensitivity=1)
     query_displayed = False
     response_displayed = False
     query_surfaces = []
