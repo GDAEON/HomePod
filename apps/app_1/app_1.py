@@ -152,7 +152,7 @@ def run(screen):
         if 'current' in weather_data:
             location_text = f"{weather_data['location']['name']}, {weather_data['location']['region']}"
             condition_text = weather_data['current']['condition']['text']
-            temp_text = f"{int(weather_data['current']['temp_f'])}°F"
+            temp_text = f"{int(weather_data['current']['temp_c'])}°C"
             humidity_text = f"Humidity: {weather_data['current']['humidity']}%"
             wind_text = f"Wind: {int(weather_data['current']['wind_mph'])} mph"
             description_text = response
@@ -175,6 +175,8 @@ def run(screen):
         pygame.display.flip()
 
 
+if __name__ == "__main__":
+    get_weather(url)
 
 #to add
 #partlycloudy

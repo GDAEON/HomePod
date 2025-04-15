@@ -42,7 +42,7 @@ class AppCircle:
 
 def create_circles(screen_size):
     circles = []
-    num_circles = 8
+    num_circles = 6
     angle_step = 360 / num_circles
     center_x, center_y = screen_size[0] // 2, screen_size[1] // 2
     radius = min(screen_size) // 2.6
@@ -123,7 +123,7 @@ def run_voice_assistant(circles, screen, background, draw_event, idle_event):
     query_rects = []
     response_surfaces = []
     response_rects = []
-    hot_words = ["jarvis", "alexa", "джарвис", "колока"]
+    hot_words = ["jarvis", "alexa", "джарвис", "колонка"]
     skip_hot_word_check = False
     print("Say something...")
     
