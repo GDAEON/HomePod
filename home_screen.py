@@ -71,7 +71,7 @@ def create_text_surfaces(response, font, screen_width, margin):
 
     text_surfaces = [font.render(line, True, (255, 255, 255)) for line in lines]
     total_height = sum(surface.get_height() for surface in text_surfaces)
-    start_y = (screen.get_height() - total_height) // 2
+    start_y = (screen_width - total_height) // 2
 
     text_rects = [surface.get_rect(center=(screen_width // 2, start_y + i * surface.get_height())) for i, surface in enumerate(text_surfaces)]
 
@@ -113,17 +113,17 @@ def apply_blur_ring_and_text(screen, text, blue_ring_thickness=100):
         screen.blit(text_surface, text_rect)
 
     # Update the display to show changes
-    pygame.display.update()
+    # pygame.display.update()
 
 def run_voice_assistant(circles, screen, background, draw_event, idle_event):
-    recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en", post_speech_silence_duration=0.1, silero_sensitivity=0.4)
+    recorder = AudioToTextRecorder(spinner=False, model="tiny", language="ru", post_speech_silence_duration=0.1, silero_sensitivity=0.4)
     query_displayed = False
     response_displayed = False
     query_surfaces = []
     query_rects = []
     response_surfaces = []
     response_rects = []
-    hot_words = ["jarvis", "alexa"]
+    hot_words = ["jarvis", "alexa", "джарвис", "колока"]
     skip_hot_word_check = False
     print("Say something...")
     

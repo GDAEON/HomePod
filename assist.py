@@ -31,14 +31,21 @@ client = OpenAI(
     api_key=api_key,
     http_client=http_client
 )
+
 mixer.init()
 
 
 
 # Retrieve the assistant and thread
 assistant = client.beta.assistants.retrieve(os.getenv('ASSISTANT_ID'))
-# thread = client.beta.threads.retrieve(thread_id=os.getenv('THREAD_ID'))
-thread = client.beta.threads.create()
+
+client.beta.assistants.update(
+    assistant_id=assistant.id,
+    tool_resources={"file_search": {"vector_store_ids": []}}
+)
+
+thread = client.beta.threads.retrieve(thread_id=os.getenv('THREAD_ID'))
+# thread = client.beta.threads.create()
 
 def ask_question_memory(question):
     global thread
@@ -71,6 +78,7 @@ def TTS(text):
     os.remove(speech_file_path)
     return "done"
 
-# question = "make it slightly vary every time"
-# response = ask_question_memory(question)
-# print(response)
+if __name__ == "__main__":
+    question = "make it slightly vary every time"
+    response = ask_question_memory(question)
+    print(response)
