@@ -129,6 +129,7 @@ def run_voice_assistant(circles, screen, background, draw_event, idle_event):
     
     while True:
         current_text = recorder.text()
+        print(current_text)
         if any(hot_word in current_text.lower() for hot_word in hot_words) or skip_hot_word_check:
             if current_text:
                 print("User: " + current_text)
