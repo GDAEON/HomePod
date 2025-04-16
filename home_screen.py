@@ -123,7 +123,7 @@ def run_voice_assistant(circles, screen, background, draw_event, idle_event):
     query_rects = []
     response_surfaces = []
     response_rects = []
-    hot_words = ["jarvis", "alexa", "джарвис", "колонка"]
+    hot_words = ["jarvis", "alexa", "джарвис", "колонка", "а", "у", "окей", "калонка", "коломнка"]
     skip_hot_word_check = False
     print("Say something...")
     
